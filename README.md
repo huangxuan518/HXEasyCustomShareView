@@ -1,2 +1,2 @@
 # HXEasyCustomShareView
-发的说法是1
+![image](https://github.com/huangxuan518/HXEasyCustomShareView/blob/master/HXEasyCustomShareView/xiaoguo.gif)
