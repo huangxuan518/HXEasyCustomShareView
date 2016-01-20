@@ -13,6 +13,7 @@
 		304859701C4E19DC00E821BC /* HXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3048596F1C4E19DC00E821BC /* HXViewController.m */; };
 		304859751C4E1CFE00E821BC /* HXEasyCustomShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 304859741C4E1CFE00E821BC /* HXEasyCustomShareView.m */; };
 		304859781C4E3A0500E821BC /* HXShareScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 304859771C4E3A0500E821BC /* HXShareScrollView.m */; };
+		30B59B871C4F735D00742CEA /* xiaoguo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30B59B861C4F735D00742CEA /* xiaoguo.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		304859741C4E1CFE00E821BC /* HXEasyCustomShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXEasyCustomShareView.m; sourceTree = "<group>"; };
 		304859761C4E3A0500E821BC /* HXShareScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXShareScrollView.h; sourceTree = "<group>"; };
 		304859771C4E3A0500E821BC /* HXShareScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXShareScrollView.m; sourceTree = "<group>"; };
+		30B59B861C4F735D00742CEA /* xiaoguo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = xiaoguo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		304859561C4E190000E821BC /* HXEasyCustomShareView */ = {
 			isa = PBXGroup;
 			children = (
+				30B59B861C4F735D00742CEA /* xiaoguo.gif */,
 				304859721C4E1CF500E821BC /* 分享相关 */,
 				3048595A1C4E190000E821BC /* AppDelegate.h */,
 				3048595B1C4E190000E821BC /* AppDelegate.m */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				304859641C4E190000E821BC /* Assets.xcassets in Resources */,
+				30B59B871C4F735D00742CEA /* xiaoguo.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +299,7 @@
 				3048596D1C4E190000E821BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
