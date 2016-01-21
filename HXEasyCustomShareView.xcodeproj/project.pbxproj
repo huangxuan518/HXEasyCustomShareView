@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3003250C1C50DEDE00292006 /* shuoming1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3003250B1C50DEDE00292006 /* shuoming1.png */; };
 		304859591C4E190000E821BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 304859581C4E190000E821BC /* main.m */; };
 		3048595C1C4E190000E821BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3048595B1C4E190000E821BC /* AppDelegate.m */; };
 		304859641C4E190000E821BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304859631C4E190000E821BC /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3003250B1C50DEDE00292006 /* shuoming1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuoming1.png; sourceTree = "<group>"; };
 		304859541C4E190000E821BC /* HXEasyCustomShareView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HXEasyCustomShareView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304859581C4E190000E821BC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3048595A1C4E190000E821BC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		304859561C4E190000E821BC /* HXEasyCustomShareView */ = {
 			isa = PBXGroup;
 			children = (
+				3003250B1C50DEDE00292006 /* shuoming1.png */,
 				30B59B861C4F735D00742CEA /* xiaoguo.gif */,
 				304859721C4E1CF500E821BC /* 分享相关 */,
 				3048595A1C4E190000E821BC /* AppDelegate.h */,
@@ -153,6 +156,7 @@
 			files = (
 				304859641C4E190000E821BC /* Assets.xcassets in Resources */,
 				30B59B871C4F735D00742CEA /* xiaoguo.gif in Resources */,
+				3003250C1C50DEDE00292006 /* shuoming1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
