@@ -69,19 +69,21 @@
     NSString *highlightedImage = dic[@"highlightedImage"];
     NSString *title = [dic[@"title"] length] > 0 ? dic[@"title"] : @"";
     
+    UIImage *icoImage = [UIImage imageNamed:image];
+    
     UIView *view = [[UIView alloc] initWithFrame:frame];
     view.backgroundColor = [UIColor clearColor];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.width);
+    button.frame = CGRectMake((view.frame.size.width-icoImage.size.width)/2, 0, icoImage.size.width, icoImage.size.height);
     button.titleLabel.font = [UIFont systemFontOfSize:_titleSize];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
     if (image.length > 0) {
-        [button setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     }
     if (highlightedImage.length > 0) {
-        [button setBackgroundImage:[UIImage imageNamed:highlightedImage] forState:UIControlStateHighlighted];
+        [button setImage:[UIImage imageNamed:highlightedImage] forState:UIControlStateHighlighted];
     }
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];

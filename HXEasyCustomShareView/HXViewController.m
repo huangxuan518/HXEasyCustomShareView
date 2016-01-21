@@ -211,24 +211,23 @@
  *  仿QQ分享界面
  */
 - (void)addQQShareView {
-    NSArray *shareAry = @[@{@"image":@"more_chat",
-                            @"highlightedImage":@"more_chat_highlighted",
+    NSArray *shareAry = @[@{@"image":@"qq_haoyou",
                             @"title":@"好友"},
-                          @{@"image":@"more_icon_qzone",
+                          @{@"image":@"qq_kongjian",
                             @"title":@"QQ空间"},
-                          @{@"image":@"more_weixin",
+                          @{@"image":@"qq_weixin",
                             @"title":@"微信"},
-                          @{@"image":@"Action_Moments",
+                          @{@"image":@"qq_pengyouquan",
                             @"title":@"朋友圈"},
-                          @{@"image":@"AS_safari",
+                          @{@"image":@"qq_safari",
                             @"title":@"Safari打开"},
-                          @{@"image":@"Action_Verified",
+                          @{@"image":@"qq_ziliao",
                             @"title":@"查看资料"},
-                          @{@"image":@"more_icon_collection",
+                          @{@"image":@"qq_shoucang",
                             @"title":@"收藏"},
-                          @{@"image":@"Action_Copy",
+                          @{@"image":@"qq_fuzhi",
                             @"title":@"复制链接"},
-                          @{@"image":@"more_icon_report",
+                          @{@"image":@"qq_jubao",
                             @"title":@"举报"}];
     
     HXEasyCustomShareView *shareView = [[HXEasyCustomShareView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, CGMMainScreenHeight)];
@@ -246,29 +245,21 @@
  *  仿淘宝分享界面
  */
 - (void)addTaobaoShareView {
-    NSArray *shareAry = @[@{@"image":@"more_chat",
-                            @"highlightedImage":@"more_chat_highlighted",
+    NSArray *shareAry = @[@{@"image":@"taobao_fuzhi",
                             @"title":@"复制"},
-                          @{@"image":@"more_weixin",
-                            @"highlightedImage":@"more_weixin_highlighted",
+                          @{@"image":@"taobao_erweima",
                             @"title":@"二维码"},
-                          @{@"image":@"more_circlefriends",
-                            @"highlightedImage":@"more_circlefriends_highlighted",
+                          @{@"image":@"taobao_songli",
                             @"title":@"送礼"},
-                          @{@"image":@"more_icon_zhifubao",
-                            @"highlightedImage":@"more_icon_zhifubao_highlighted",
+                          @{@"image":@"taobao_weixin",
                             @"title":@"微信"},
-                          @{@"image":@"more_icon_zhifubao_friend",
-                            @"highlightedImage":@"more_icon_zhifubao_friend_highlighted",
+                          @{@"image":@"taobao_qq",
                             @"title":@"QQ好友"},
-                          @{@"image":@"more_icon_qq",
-                            @"highlightedImage":@"more_icon_qq_highlighted",
+                          @{@"image":@"taobao_weibo",
                             @"title":@"微博"},
-                          @{@"image":@"more_icon_qzone",
-                            @"highlightedImage":@"more_icon_qzone_highlighted",
+                          @{@"image":@"taobao_guangjie",
                             @"title":@"爱逛街"},
-                          @{@"image":@"more_mms",
-                            @"highlightedImage":@"more_mms_highlighted",
+                          @{@"image":@"taobao_zhifu",
                             @"title":@"支付宝好友"}];
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, 30)];
@@ -297,7 +288,31 @@
     label.text = @"手机联系人和淘友";
     [footerView addSubview:label];
     
+    UIImageView *icoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(label.frame.origin.x, label.frame.origin.y+label.frame.size.height+12, 57, 57)];
+    icoImageView.image = [UIImage imageNamed:@"taobao_lianxiren"];
+    [footerView addSubview:icoImageView];
     
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(icoImageView.frame.origin.x+icoImageView.frame.size.width, icoImageView.frame.origin.y, headerView.frame.size.width-24-icoImageView.frame.size.width, icoImageView.frame.size.height)];
+    view.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1.0];
+    [footerView addSubview:view];
+    
+    NSString *content = @"分享给淘友或手机联系人,好友可在手机淘宝【消息中心】或【短信】中看到你的分享";
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:content];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+    [paragraphStyle setLineSpacing:5];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, content.length)];
+    //调节高度
+    CGSize size = CGSizeMake(headerView.frame.size.width-24-icoImageView.frame.size.width, 500000);
+
+    label = [[UILabel alloc] initWithFrame:CGRectMake(icoImageView.frame.origin.x+icoImageView.frame.size.width+10, icoImageView.frame.origin.y, headerView.frame.size.width-24-icoImageView.frame.size.width-10, icoImageView.frame.size.height)];
+    label.textColor = [UIColor colorWithRed:107/255.0 green:107/255.0 blue:107/255.0 alpha:1.0];
+    label.numberOfLines = 0;
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont systemFontOfSize:12];
+    label.attributedText = attributedString;
+    [footerView addSubview:label];
+    [label sizeThatFits:size];
     
     HXEasyCustomShareView *shareView = [[HXEasyCustomShareView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, CGMMainScreenHeight)];
     shareView.backView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.9];
