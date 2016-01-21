@@ -22,8 +22,13 @@
         [zhezhaoView addGestureRecognizer:myTap];
         [self addSubview:zhezhaoView];
         
-        _boderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 200)];
-        _boderView.backgroundColor = [UIColor whiteColor];
+        _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 107)];
+        _backView.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.9];
+        _backView.userInteractionEnabled = YES;
+        [self addSubview:_backView];
+        
+        _boderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, _backView.frame.size.height)];
+        _boderView.backgroundColor = [UIColor clearColor];
         _boderView.userInteractionEnabled = YES;
         [self addSubview:_boderView];
         
@@ -62,21 +67,43 @@
     NSArray *ary1 = [shareAry subarrayWithRange:NSMakeRange(0,_firstCount)];
     NSArray *ary2 = [shareAry subarrayWithRange:NSMakeRange(_firstCount,shareAry.count-_firstCount)];
 
-    HXShareScrollView *shareScrollView = [[HXShareScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 107)];
+    HXShareScrollView *shareScrollView = [[HXShareScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [HXShareScrollView getShareScrollViewHeight])];
     [shareScrollView setShareAry:ary1 delegate:self];
+    shareScrollView.showsHorizontalScrollIndicator = _showsHorizontalScrollIndicator;
     [_boderView addSubview:shareScrollView];
     
     if (_firstCount < shareAry.count) {
         //分割线
-        UIImageView *bottomLineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, shareScrollView.frame.origin.y+shareScrollView.frame.size.height, self.frame.size.width, 1)];
-        bottomLineImageView.backgroundColor = [UIColor clearColor];
-        bottomLineImageView.image = [self imageWithColor:[UIColor colorWithRed:208/255.0 green:208/255.0 blue:208/255.0 alpha:1.0] size:CGSizeMake(1.0, 1.0)];
-        [_boderView addSubview:bottomLineImageView];
+        self.middleLineLabel.frame = CGRectMake(0, shareScrollView.frame.origin.y+shareScrollView.frame.size.height, self.frame.size.width, 0.5);
         
-        shareScrollView = [[HXShareScrollView alloc] initWithFrame:CGRectMake(0, bottomLineImageView.frame.origin.y+bottomLineImageView.frame.size.height, self.frame.size.width, 107)];
+        shareScrollView = [[HXShareScrollView alloc] initWithFrame:CGRectMake(0, _middleLineLabel.frame.origin.y+_middleLineLabel.frame.size.height, self.frame.size.width, [HXShareScrollView getShareScrollViewHeight])];
         [shareScrollView setShareAry:ary2 delegate:self];
+        shareScrollView.showsHorizontalScrollIndicator = _showsHorizontalScrollIndicator;
         [_boderView addSubview:shareScrollView];
     }
+}
+
+- (UILabel *)middleLineLabel {
+    if (!_middleLineLabel) {
+        _middleLineLabel = [UILabel new];
+        _middleLineLabel.backgroundColor = [UIColor colorWithRed:208/255.0 green:208/255.0 blue:208/255.0 alpha:1.0];
+        [_boderView addSubview:_middleLineLabel];
+    }
+    return _middleLineLabel;
+}
+
+- (float)getBoderViewHeight:(NSArray *)shareAry firstCount:(NSInteger)count {
+    _firstCount = count;
+    float height = [HXShareScrollView getShareScrollViewHeight];
+    
+    if (_firstCount > shareAry.count || _firstCount == 0) {
+        return height;
+    }
+    
+    if (_firstCount < shareAry.count) {
+        return height*2+1;
+    }
+    return 0;
 }
 
 #pragma mark HXShareScrollViewDelegate
@@ -88,7 +115,6 @@
 }
 
 - (void)cancleButtonAction:(UIButton *)sender {
-    NSLog(@"取消");
     [self tappedCancel];
 }
 
@@ -123,24 +149,28 @@
         height += _headerView.frame.size.height;
         _headerView.frame = CGRectMake(0, self.frame.size.height-height, _headerView.frame.size.width, _headerView.frame.size.height);
     }
+    
+    if (_backView) {
+        _backView.frame = CGRectMake(0, self.frame.size.height-height, _backView.frame.size.width, height);
+    }
 }
          
 //颜色生成图片方法
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
- CGRect rect = CGRectMake(0, 0, size.width, size.height);
- 
- UIGraphicsBeginImageContext(rect.size);
- 
- CGContextRef context = UIGraphicsGetCurrentContext();
- 
- CGContextSetFillColorWithColor(context,
-                                
-                                color.CGColor);
- CGContextFillRect(context, rect);
- UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
- UIGraphicsEndImageContext();
- 
- return img;
+     CGRect rect = CGRectMake(0, 0, size.width, size.height);
+     
+     UIGraphicsBeginImageContext(rect.size);
+     
+     CGContextRef context = UIGraphicsGetCurrentContext();
+     
+     CGContextSetFillColorWithColor(context,
+                                    
+                                    color.CGColor);
+     CGContextFillRect(context, rect);
+     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+     UIGraphicsEndImageContext();
+     
+     return img;
 }
 
 @end

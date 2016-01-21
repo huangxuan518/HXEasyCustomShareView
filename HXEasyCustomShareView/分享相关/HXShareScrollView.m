@@ -6,6 +6,7 @@
 //  Copyright © 2015年 IT小子. All rights reserved.
 
 #import "HXShareScrollView.h"
+#import "HXEasyCustomShareView.h"
 
 @implementation HXShareScrollView
 
@@ -16,14 +17,14 @@
         self.showsVerticalScrollIndicator = YES;
         self.backgroundColor = [UIColor clearColor];
         
-        _originX = 15.0;
-        _originY = 15.0;
-        _icoWidth = 57.0;
-        _icoAndTitleSpace = 10;
-        _titleSize = 10;
-        _titleColor = [UIColor colorWithRed:52/255.0 green:52/255.0 blue:50/255.0 alpha:1.0];
-        _lastlySpace = 15.0;
-        _horizontalSpace = 15.0;
+        _originX = HXOriginX;
+        _originY = HXOriginY;
+        _icoWidth = HXIcoWidth;
+        _icoAndTitleSpace = HXIcoAndTitleSpace;
+        _titleSize = HXTitleSize;
+        _titleColor = HXTitleColor;
+        _lastlySpace = HXLastlySpace;
+        _horizontalSpace = HXHorizontalSpace;
 
         //设置当前scrollView的高度
         if (self.frame.size.height <= 0) {
@@ -94,6 +95,11 @@
     [view addSubview:label];
     
     return view;
+}
+
++ (float)getShareScrollViewHeight {
+    float height = HXOriginY+HXIcoWidth+HXIcoAndTitleSpace+HXTitleSize+HXLastlySpace;
+    return height;
 }
 
 - (void)buttonAction:(UIButton *)sender {

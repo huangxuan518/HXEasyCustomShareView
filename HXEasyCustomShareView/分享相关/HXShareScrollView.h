@@ -30,5 +30,6 @@
 @property (nonatomic,assign) float horizontalSpace;//横向间距
 
 - (void)setShareAry:(NSArray *)shareAry delegate:(id)delegate;
++ (float)getShareScrollViewHeight;
 
 @end
