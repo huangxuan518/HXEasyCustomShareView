@@ -11,8 +11,8 @@
 这样的划分就可以是HXEasyCustomShareView可以满足大部分的分享界面,headerView和footerView可以你自定义,对于boderView里面的分享间的各项间隔参数你可以通过修改宏来修改.宏在HXEasyCustomShareView.h里面,修改起来很方便,因为一个工程里面只有一套分享的UI界面,所以用宏来控制就可以了.
 
 # 代码示例
-  //数据源,数组里面放每个分享数据字典,字典里面包含图片,高亮图片以及标题
- NSArray *shareAry = @[@{@"image":@"more_chat",
+     //数据源,数组里面放每个分享数据字典,字典里面包含图片,高亮图片以及标题
+     NSArray *shareAry = @[@{@"image":@"more_chat",
                             @"highlightedImage":@"more_chat_highlighted",
                             @"title":@"私信和群"},
                           @{@"image":@"more_weixin",
@@ -72,10 +72,10 @@
     [shareView setShareAry:shareAry delegate:self];
     [self.navigationController.view addSubview:shareView];
     
-  #pragma mark HXEasyCustomShareViewDelegate
-  - (void)easyCustomShareViewButtonAction:(HXEasyCustomShareView *)shareView title:(NSString *)title {
-     NSLog(@"当前点击:%@",title);
-  }
+    #pragma mark HXEasyCustomShareViewDelegate
+    - (void)easyCustomShareViewButtonAction:(HXEasyCustomShareView *)shareView title:(NSString *)title {
+      NSLog(@"当前点击:%@",title);
+     }
 
 # 博客交流
 
