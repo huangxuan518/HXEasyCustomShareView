@@ -96,6 +96,7 @@
  *  仿新浪微博分享界面
  */
 - (void)addWeiboShareView {
+    //分享媒介数据源
     NSArray *shareAry = @[@{@"image":@"more_chat",
                             @"highlightedImage":@"more_chat_highlighted",
                             @"title":@"私信和群"},
@@ -148,7 +149,9 @@
     label.text = @"分享到";
     [headerView addSubview:label];
     
+    //实例化
     HXEasyCustomShareView *shareView = [[HXEasyCustomShareView alloc] initWithFrame:CGRectMake(0, 0, CGMMainScreenWidth, CGMMainScreenHeight)];
+    //设置头部View 如果不设置则不显示头部
     shareView.headerView = headerView;
     //计算高度 根据第一行显示的数量和总数,可以确定显示一行还是两行,最多显示2行
     float height = [shareView getBoderViewHeight:shareAry firstCount:9];
