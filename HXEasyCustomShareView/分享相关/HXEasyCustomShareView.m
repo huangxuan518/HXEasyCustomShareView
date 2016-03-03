@@ -16,6 +16,7 @@
     if (self) {
         UIView *zhezhaoView = [[UIView alloc] initWithFrame:frame];
         zhezhaoView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.6];
+        zhezhaoView.tag = 100;
         zhezhaoView.userInteractionEnabled = YES;
         
         UITapGestureRecognizer *myTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerAction:)];
@@ -123,7 +124,34 @@
 }
 
 - (void)tappedCancel {
-    [self removeFromSuperview];
+    [UIView animateWithDuration:0.3 animations:^{
+        UIView *zhezhaoView = (UIView *)[self viewWithTag:100];
+        zhezhaoView.alpha = 0;
+    
+        if (_backView) {
+            _backView.frame = CGRectMake(0, self.frame.size.height, _backView.frame.size.width, _backView.frame.size.height);
+        }
+        
+        if (_cancleButton) {
+            _cancleButton.frame = CGRectMake(0, _cancleButton.frame.origin.y + _backView.frame.size.height, _cancleButton.frame.size.width, _cancleButton.frame.size.height);
+        }
+        
+        if (_footerView) {
+            _footerView.frame = CGRectMake(0, _footerView.frame.origin.y + _backView.frame.size.height, _footerView.frame.size.width, _footerView.frame.size.height);
+        }
+        
+        if (_boderView) {
+            _boderView.frame = CGRectMake(0, _boderView.frame.origin.y + _backView.frame.size.height, _boderView.frame.size.width, _boderView.frame.size.height);
+        }
+        
+        if (_headerView) {
+            _headerView.frame = CGRectMake(0, _headerView.frame.origin.y + _backView.frame.size.height, _headerView.frame.size.width, _headerView.frame.size.height);
+        }
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self removeFromSuperview];
+        }
+    }];
 }
 
 -(void)layoutSubviews {
@@ -133,26 +161,84 @@
     if (_cancleButton) {
         height += _cancleButton.frame.size.height;
         _cancleButton.frame = CGRectMake(0, self.frame.size.height-height, _cancleButton.frame.size.width, _cancleButton.frame.size.height);
+        _cancleButton.hidden = YES;
     }
     
     if (_footerView) {
         height += _footerView.frame.size.height;
         _footerView.frame = CGRectMake(0, self.frame.size.height-height, _footerView.frame.size.width, _footerView.frame.size.height);
+        _footerView.hidden = YES;
     }
     
     if (_boderView) {
         height += _boderView.frame.size.height;
         _boderView.frame = CGRectMake(0, self.frame.size.height-height, _boderView.frame.size.width, _boderView.frame.size.height);
+        _boderView.hidden = YES;
     }
     
     if (_headerView) {
         height += _headerView.frame.size.height;
         _headerView.frame = CGRectMake(0, self.frame.size.height-height, _headerView.frame.size.width, _headerView.frame.size.height);
+        _headerView.hidden = YES;
     }
     
     if (_backView) {
         _backView.frame = CGRectMake(0, self.frame.size.height-height, _backView.frame.size.width, height);
+        _backView.hidden = YES;
     }
+    
+    if (_cancleButton) {
+        _cancleButton.frame = CGRectMake(0, _cancleButton.frame.origin.y + _backView.frame.size.height, _cancleButton.frame.size.width, _cancleButton.frame.size.height);
+        _cancleButton.hidden = NO;
+    }
+    
+    if (_footerView) {
+        _footerView.frame = CGRectMake(0, _footerView.frame.origin.y + _backView.frame.size.height, _footerView.frame.size.width, _footerView.frame.size.height);
+        _footerView.hidden = NO;
+    }
+    
+    if (_boderView) {
+        _boderView.frame = CGRectMake(0, _boderView.frame.origin.y + _backView.frame.size.height, _boderView.frame.size.width, _boderView.frame.size.height);
+        _boderView.hidden = NO;
+    }
+    
+    if (_headerView) {
+        _headerView.frame = CGRectMake(0, _headerView.frame.origin.y + _backView.frame.size.height, _headerView.frame.size.width, _headerView.frame.size.height);
+        _headerView.hidden = NO;
+    }
+    
+    if (_backView) {
+        _backView.frame = CGRectMake(0, self.frame.size.height, _backView.frame.size.width, _backView.frame.size.height);
+        _backView.hidden = NO;
+    }
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        UIView *zhezhaoView = (UIView *)[self viewWithTag:100];
+        zhezhaoView.alpha = 0.9;
+        
+        if (_cancleButton) {
+            _cancleButton.frame = CGRectMake(0, _cancleButton.frame.origin.y - _backView.frame.size.height, _cancleButton.frame.size.width, _cancleButton.frame.size.height);
+        }
+        
+        if (_footerView) {
+            _footerView.frame = CGRectMake(0, _footerView.frame.origin.y - _backView.frame.size.height, _footerView.frame.size.width, _footerView.frame.size.height);
+        }
+        
+        if (_boderView) {
+            _boderView.frame = CGRectMake(0, _boderView.frame.origin.y - _backView.frame.size.height, _boderView.frame.size.width, _boderView.frame.size.height);
+        }
+        
+        if (_headerView) {
+            _headerView.frame = CGRectMake(0, _headerView.frame.origin.y - _backView.frame.size.height, _headerView.frame.size.width, _headerView.frame.size.height);
+        }
+        
+        if (_backView) {
+            _backView.frame = CGRectMake(0, self.frame.size.height - _backView.frame.size.height, _backView.frame.size.width, _backView.frame.size.height);
+        }
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
          
 //颜色生成图片方法
