@@ -124,7 +124,7 @@
 }
 
 - (void)tappedCancel {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         UIView *zhezhaoView = (UIView *)[self viewWithTag:100];
         zhezhaoView.alpha = 0;
     
@@ -212,9 +212,7 @@
         _backView.hidden = NO;
     }
     
-    [UIView animateWithDuration:0.3 animations:^{
-        UIView *zhezhaoView = (UIView *)[self viewWithTag:100];
-        zhezhaoView.alpha = 0.9;
+    [UIView animateWithDuration:0.5 animations:^{
         
         if (_cancleButton) {
             _cancleButton.frame = CGRectMake(0, _cancleButton.frame.origin.y - _backView.frame.size.height, _cancleButton.frame.size.width, _cancleButton.frame.size.height);
@@ -235,6 +233,9 @@
         if (_backView) {
             _backView.frame = CGRectMake(0, self.frame.size.height - _backView.frame.size.height, _backView.frame.size.width, _backView.frame.size.height);
         }
+        
+        UIView *zhezhaoView = (UIView *)[self viewWithTag:100];
+        zhezhaoView.alpha = 0.9;
         
     } completion:^(BOOL finished) {
         
